@@ -6,6 +6,7 @@ mixin Loader<T extends StatefulWidget> on State<T> {
 
   void showLoader() {
     if (!isOpen) {
+      isOpen = true;
       showDialog(
         context: context,
         builder: (context) {
@@ -22,6 +23,7 @@ mixin Loader<T extends StatefulWidget> on State<T> {
     if (isOpen) {
       isOpen = false;
       Navigator.of(context, rootNavigator: true).pop();
+      // Modular.to.pop();
     }
   }
 

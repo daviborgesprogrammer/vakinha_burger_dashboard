@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../global/constants.dart';
+import '../../global/global_context.dart';
 import '../../storage/storage.dart';
 
 class AuthInterceptor extends Interceptor {
@@ -18,10 +19,9 @@ class AuthInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     if (err.response?.statusCode == 401) {
-      // GlobalContext.instance.loginExpire();
+      GlobalContext.instance.loginExpire();
     } else {
       handler.next(err);
     }
-    super.onError(err, handler);
   }
 }

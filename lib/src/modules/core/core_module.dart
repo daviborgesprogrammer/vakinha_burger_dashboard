@@ -5,6 +5,7 @@ import '../../core/storage/storage.dart';
 import '../../core/rest_client/custom_dio.dart';
 import '../../repositories/payment_type/payment_type_repository.dart';
 import '../../repositories/payment_type/payment_type_repository_impl.dart';
+import '../../repositories/product/product_repository_impl.dart';
 
 class CoreModule extends Module {
   @override
@@ -15,5 +16,6 @@ class CoreModule extends Module {
           (i) => PaymentTypeRepositoryImpl(i()),
           export: true,
         ),
+        Bind.lazySingleton((i) => ProductRepositoryImpl(i()), export: true),
       ];
 }

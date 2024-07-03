@@ -1,9 +1,11 @@
-import '../../core/storage/storage.dart';
-import '../../core/global/constants.dart';
-import '../../repositories/auth/auth_repository.dart';
-import './login_service.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
-class LoginServiceImpl implements LoginService {
+import '../../core/global/constants.dart';
+import '../../core/storage/storage.dart';
+import '../../repositories/auth/auth_repository.dart';
+import 'login_service.dart';
+
+class LoginServiceImpl extends LoginService {
   final AuthRepository _authRepository;
   final Storage _storage;
 

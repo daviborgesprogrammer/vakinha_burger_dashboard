@@ -7,6 +7,7 @@ import '../storage/storage.dart';
 class GlobalContext {
   late final GlobalKey<NavigatorState> _navigatorKey;
   static GlobalContext? _instance;
+  // Avoid self isntance
   GlobalContext._();
   static GlobalContext get instance {
     _instance ??= GlobalContext._();
@@ -25,7 +26,7 @@ class GlobalContext {
         backgroundColor: Colors.transparent,
         content: AwesomeSnackbarContent(
           title: 'Login Expirado',
-          message: 'Login Expirado, faça login novamente',
+          message: 'Seu login expirou, faça login novamente',
           contentType: ContentType.failure,
         ),
       ),

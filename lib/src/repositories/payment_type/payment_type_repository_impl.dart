@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -23,7 +24,7 @@ class PaymentTypeRepositoryImpl implements PaymentTypeRepository {
       return paymentResult.data
           .map<PaymentTypeModel>((p) => PaymentTypeModel.fromMap(p))
           .toList();
-    } on DioException catch (e, s) {
+    } on DioError catch (e, s) {
       log('Erro ao buscar formas de pagamento', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar formas de pagamento');
     }
@@ -36,7 +37,7 @@ class PaymentTypeRepositoryImpl implements PaymentTypeRepository {
             '/payment-types/$id',
           );
       return PaymentTypeModel.fromMap(paymentResult.data);
-    } on DioException catch (e, s) {
+    } on DioError catch (e, s) {
       log('Erro ao buscar forma de pagamento $id', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar formas de pagamento');
     }
@@ -57,7 +58,7 @@ class PaymentTypeRepositoryImpl implements PaymentTypeRepository {
           data: model.toMap(),
         );
       }
-    } on DioException catch (e, s) {
+    } on DioError catch (e, s) {
       log('Erro ao salvar forma de pagamento', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao salvar forma de pagamento');
     }

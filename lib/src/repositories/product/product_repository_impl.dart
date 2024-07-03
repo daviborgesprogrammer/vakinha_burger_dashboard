@@ -21,7 +21,7 @@ class ProductRepositoryImpl implements ProductRepository {
         '/products/$id',
         data: {'enabled': false},
       );
-    } on DioException catch (e, s) {
+    } on DioError catch (e, s) {
       log('Erro ao deletar produto', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao deletar produto');
     }
@@ -41,7 +41,7 @@ class ProductRepositoryImpl implements ProductRepository {
       return productResult.data
           .map<ProductModel>((p) => ProductModel.fromMap(p))
           .toList();
-    } on DioException catch (e, s) {
+    } on DioError catch (e, s) {
       log('Erro ao buscar produtos', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar produtos');
     }
@@ -54,7 +54,7 @@ class ProductRepositoryImpl implements ProductRepository {
             '/products/$id',
           );
       return ProductModel.fromMap(productResult.data);
-    } on DioException catch (e, s) {
+    } on DioError catch (e, s) {
       log('Erro ao buscar produto $id', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar produto $id');
     }
@@ -76,7 +76,7 @@ class ProductRepositoryImpl implements ProductRepository {
           data: data,
         );
       }
-    } on DioException catch (e, s) {
+    } on DioError catch (e, s) {
       log('Erro ao salvar produto', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao salvar produto');
     }

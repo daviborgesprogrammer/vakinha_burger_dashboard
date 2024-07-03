@@ -13,8 +13,8 @@ class ThemeConfig {
   );
 
   static final theme = ThemeData(
-    scaffoldBackgroundColor: Colors.white,
     useMaterial3: false,
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.black,
       elevation: 0,

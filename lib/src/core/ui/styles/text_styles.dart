@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class TextStyles {
   static TextStyles? _instance;
+  // Avoid self isntance
   TextStyles._();
   static TextStyles get instance {
     _instance ??= TextStyles._();

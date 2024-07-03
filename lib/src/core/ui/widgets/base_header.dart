@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../styles/text_styles.dart';
@@ -7,17 +8,18 @@ class BaseHeader extends StatelessWidget {
   final ValueChanged<String>? searchChange;
   final String buttonLabel;
   final VoidCallback? buttonPressed;
-  final bool addButton;
+  final bool addbutton;
   final Widget? filterWidget;
+
   const BaseHeader({
+    Key? key,
     required this.title,
-    super.key,
     this.searchChange,
-    required this.buttonLabel,
+    this.buttonLabel = '',
     this.buttonPressed,
-    this.addButton = true,
+    this.addbutton = true,
     this.filterWidget,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class BaseHeader extends StatelessWidget {
               visible: filterWidget == null,
               replacement: filterWidget ?? const SizedBox.shrink(),
               child: SizedBox(
-                width: constraints.maxWidth * 0.15,
+                width: constraints.maxWidth * .15,
                 child: TextFormField(
                   onChanged: searchChange,
                   decoration: InputDecoration(
@@ -41,15 +43,17 @@ class BaseHeader extends StatelessWidget {
                     ),
                     label: Text(
                       'Buscar',
-                      style: context.textStyles.textRegular
-                          .copyWith(fontSize: 12, color: Colors.grey),
+                      style: context.textStyles.textRegular.copyWith(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
             Container(
-              width: constraints.maxWidth * 0.65,
+              width: constraints.maxWidth * .65,
               padding: const EdgeInsets.all(8),
               child: Text(
                 title,
@@ -61,19 +65,20 @@ class BaseHeader extends StatelessWidget {
               ),
             ),
             Visibility(
-              visible: addButton,
+              visible: addbutton,
               child: SizedBox(
-                width: constraints.maxWidth * 0.15,
+                width: constraints.maxWidth * .15,
+                height: 48,
                 child: OutlinedButton.icon(
                   onPressed: buttonPressed,
                   icon: Icon(
                     Icons.add,
-                    size: constraints.maxWidth * 0.02,
+                    size: constraints.maxWidth * .02,
                   ),
                   label: Text(buttonLabel),
                 ),
               ),
-            ),
+            )
           ],
         );
       },

@@ -5,7 +5,6 @@ import 'menu/menu_bar.dart' as menu;
 
 class BaseLayout extends StatelessWidget {
   final Widget body;
-
   const BaseLayout({required this.body, super.key});
 
   @override
@@ -32,7 +31,7 @@ class BaseLayout extends StatelessWidget {
               ),
             ),
             Positioned.fill(
-              top: shortestSide * .13,
+              top: shortestSide * .14,
               child: Container(
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -47,14 +46,14 @@ class BaseLayout extends StatelessWidget {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(left: 20),
-                        color: Colors.grey[50],
+                        color: Colors.grey[50]!,
                         child: body,
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),

@@ -45,6 +45,15 @@ mixin _$LoginController on LoginControllerBase, Store {
     });
   }
 
+  late final _$loginAsyncAction =
+      AsyncAction('LoginControllerBase.login', context: context);
+
+  @override
+  Future<void> login({required String email, required String password}) {
+    return _$loginAsyncAction
+        .run(() => super.login(email: email, password: password));
+  }
+
   @override
   String toString() {
     return '''

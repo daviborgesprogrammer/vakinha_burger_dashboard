@@ -7,7 +7,7 @@ import '../../../core/ui/helpers/debouncer.dart';
 import '../../../core/ui/helpers/loader.dart';
 import '../../../core/ui/helpers/messages.dart';
 import '../../../core/ui/widgets/base_header.dart';
-import 'product_controller.dart';
+import 'products_controller.dart';
 import 'widgets/product_item.dart';
 
 class ProductsPage extends StatefulWidget {
@@ -18,7 +18,7 @@ class ProductsPage extends StatefulWidget {
 }
 
 class _ProductsPageState extends State<ProductsPage> with Loader, Messages {
-  final controller = Modular.get<ProductController>();
+  final controller = Modular.get<ProductsController>();
   late final ReactionDisposer statusDisposer;
   final debouncer = Debouncer(milliseconds: 500);
 

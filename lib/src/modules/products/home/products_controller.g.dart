@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_controller.dart';
+part of 'products_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'product_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$ProductController on ProductControllerBase, Store {
+mixin _$ProductsController on ProductsControllerBase, Store {
   late final _$_statusAtom =
-      Atom(name: 'ProductControllerBase._status', context: context);
+      Atom(name: 'ProductsControllerBase._status', context: context);
 
   ProductStateStatus get status {
     _$_statusAtom.reportRead();
@@ -28,7 +28,7 @@ mixin _$ProductController on ProductControllerBase, Store {
   }
 
   late final _$_productsAtom =
-      Atom(name: 'ProductControllerBase._products', context: context);
+      Atom(name: 'ProductsControllerBase._products', context: context);
 
   List<ProductModel> get products {
     _$_productsAtom.reportRead();
@@ -46,7 +46,7 @@ mixin _$ProductController on ProductControllerBase, Store {
   }
 
   late final _$_filterNameAtom =
-      Atom(name: 'ProductControllerBase._filterName', context: context);
+      Atom(name: 'ProductsControllerBase._filterName', context: context);
 
   String? get filterName {
     _$_filterNameAtom.reportRead();
@@ -64,7 +64,7 @@ mixin _$ProductController on ProductControllerBase, Store {
   }
 
   late final _$_productSelectedAtom =
-      Atom(name: 'ProductControllerBase._productSelected', context: context);
+      Atom(name: 'ProductsControllerBase._productSelected', context: context);
 
   ProductModel? get productSelected {
     _$_productSelectedAtom.reportRead();
@@ -82,7 +82,7 @@ mixin _$ProductController on ProductControllerBase, Store {
   }
 
   late final _$filterByNameAsyncAction =
-      AsyncAction('ProductControllerBase.filterByName', context: context);
+      AsyncAction('ProductsControllerBase.filterByName', context: context);
 
   @override
   Future<void> filterByName(String name) {
@@ -90,7 +90,7 @@ mixin _$ProductController on ProductControllerBase, Store {
   }
 
   late final _$loadProductsAsyncAction =
-      AsyncAction('ProductControllerBase.loadProducts', context: context);
+      AsyncAction('ProductsControllerBase.loadProducts', context: context);
 
   @override
   Future<void> loadProducts() {
@@ -98,7 +98,7 @@ mixin _$ProductController on ProductControllerBase, Store {
   }
 
   late final _$addProductAsyncAction =
-      AsyncAction('ProductControllerBase.addProduct', context: context);
+      AsyncAction('ProductsControllerBase.addProduct', context: context);
 
   @override
   Future<void> addProduct() {
@@ -106,7 +106,7 @@ mixin _$ProductController on ProductControllerBase, Store {
   }
 
   late final _$editProductAsyncAction =
-      AsyncAction('ProductControllerBase.editProduct', context: context);
+      AsyncAction('ProductsControllerBase.editProduct', context: context);
 
   @override
   Future<void> editProduct(ProductModel productModel) {

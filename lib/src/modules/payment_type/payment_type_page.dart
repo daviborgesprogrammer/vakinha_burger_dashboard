@@ -25,7 +25,7 @@ class _PaymentTypePageState extends State<PaymentTypePage>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       final filterDisposer = reaction((_) => controller.filterEnabled, (_) {
         controller.loadPayments();
       });
@@ -98,28 +98,30 @@ class _PaymentTypePageState extends State<PaymentTypePage>
       padding: const EdgeInsets.only(left: 40, top: 40, right: 40),
       child: Column(
         children: [
-          PaymentTypeHeader(
-            controller: controller,
+          PaymentTypeHeader(controller: controller),
+          const SizedBox(
+            height: 50,
           ),
-          const SizedBox(height: 50),
           Expanded(
             child: Observer(
-              builder: (_) => GridView.builder(
-                itemCount: controller.paymentTypes.length,
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  mainAxisExtent: 120,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 10,
-                  maxCrossAxisExtent: 680,
-                ),
-                itemBuilder: (context, index) {
-                  final paymentTypeModel = controller.paymentTypes[index];
-                  return PaymentTypeItem(
-                    payment: paymentTypeModel,
-                    controller: controller,
-                  );
-                },
-              ),
+              builder: (_) {
+                return GridView.builder(
+                  itemCount: controller.paymentTypes.length,
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    mainAxisExtent: 120,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 10,
+                    maxCrossAxisExtent: 680,
+                  ),
+                  itemBuilder: (_, index) {
+                    final paymentTypeModel = controller.paymentTypes[index];
+                    return PaymentTypeItem(
+                      payment: paymentTypeModel,
+                      controller: controller,
+                    );
+                  },
+                );
+              },
             ),
           ),
         ],
@@ -127,3 +129,4 @@ class _PaymentTypePageState extends State<PaymentTypePage>
     );
   }
 }
+// 53:42

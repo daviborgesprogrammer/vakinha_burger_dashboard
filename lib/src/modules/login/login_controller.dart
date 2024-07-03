@@ -19,14 +19,15 @@ abstract class LoginControllerBase with Store {
   final LoginService _loginService;
 
   @readonly
-  LoginStateStatus _loginStatus = LoginStateStatus.initial;
+  var _loginStatus = LoginStateStatus.initial;
 
   @readonly
   String? _errorMessage;
 
   LoginControllerBase(this._loginService);
 
-  Future<void> login(String email, String password) async {
+  @action
+  Future<void> login({required String email, required String password}) async {
     try {
       _loginStatus = LoginStateStatus.loading;
       await _loginService.execute(email, password);

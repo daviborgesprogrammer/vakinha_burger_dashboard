@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -5,7 +6,7 @@ import '../../../../core/env/env.dart';
 import '../../../../core/extensions/formatter_extensions.dart';
 import '../../../../core/ui/styles/text_styles.dart';
 import '../../../../models/product_model.dart';
-import '../product_controller.dart';
+import '../products_controller.dart';
 
 class ProductItem extends StatelessWidget {
   final ProductModel product;
@@ -33,7 +34,7 @@ class ProductItem extends StatelessWidget {
                   ),
                   image: DecorationImage(
                     image: NetworkImage(
-                      '${Env.i.get('backend_base_url')}${product.image}',
+                      '${Env.instance.get('backend_base_url')}${product.image}',
                     ),
                     fit: BoxFit.cover,
                   ),
@@ -60,12 +61,12 @@ class ProductItem extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      context.read<ProductController>().editProduct(product);
+                      context.read<ProductsController>().editProduct(product);
                     },
                     child: const Text('Editar'),
-                  ),
+                  )
                 ],
-              ),
+              )
             ],
           );
         },

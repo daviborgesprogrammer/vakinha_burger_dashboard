@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import '../../models/product_model.dart';
 
-abstract interface class ProductRepository {
+abstract class ProductRepository {
   Future<List<ProductModel>> findAll(String? name);
   Future<ProductModel> getProduct(int id);
   Future<void> save(ProductModel productModel);

@@ -1,25 +1,20 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../models/product_model.dart';
 import '../../../repositories/product/product_repository.dart';
-part 'product_controller.g.dart';
+part 'products_controller.g.dart';
 
-enum ProductStateStatus {
-  initial,
-  loading,
-  loaded,
-  error,
-  addOrUpdateProduct,
-}
+enum ProductStateStatus { initial, loading, loaded, error, addOrUpdateProduct }
 
-class ProductController = ProductControllerBase with _$ProductController;
+class ProductsController = ProductsControllerBase with _$ProductsController;
 
-abstract class ProductControllerBase with Store {
+abstract class ProductsControllerBase with Store {
   final ProductRepository _productRepository;
 
-  ProductControllerBase(this._productRepository);
+  ProductsControllerBase(this._productRepository);
 
   @readonly
   var _status = ProductStateStatus.initial;
@@ -46,7 +41,7 @@ abstract class ProductControllerBase with Store {
       _products = await _productRepository.findAll(_filterName);
       _status = ProductStateStatus.loaded;
     } catch (e, s) {
-      // debugPrintStack(label: e.toString());
+      debugPrintStack(label: e.toString());
       log('Erro ao buscar produtos', error: e, stackTrace: s);
       _status = ProductStateStatus.error;
     }

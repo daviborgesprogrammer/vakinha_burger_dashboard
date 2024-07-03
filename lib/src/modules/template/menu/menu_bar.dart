@@ -14,44 +14,46 @@ class MenuBar extends StatefulWidget {
 
 class _MenuBarState extends State<MenuBar> {
   Menu? selectedMenu;
-  var collapsed = false;
+  var colapsed = false;
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      width: collapsed ? 90 : context.percentWidth(0.18),
+      width: colapsed ? 90 : context.percentWidth(.18),
       height: double.infinity,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Align(
-            alignment: collapsed ? Alignment.center : Alignment.centerRight,
+            alignment: colapsed ? Alignment.center : Alignment.centerRight,
             child: IconButton(
               onPressed: () {
                 setState(() {
-                  collapsed = !collapsed;
+                  colapsed = !colapsed;
                 });
               },
               icon: Icon(
-                collapsed
+                colapsed
                     ? Icons.keyboard_double_arrow_right
                     : Icons.keyboard_double_arrow_left,
               ),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(
+            height: 10,
+          ),
           ListView.builder(
             shrinkWrap: true,
             itemCount: Menu.values.length,
-            itemBuilder: (context, index) {
+            itemBuilder: (_, index) {
               final menu = Menu.values[index];
               return MenuButton(
                 menu: menu,
                 menuSelected: selectedMenu,
-                onPressed: (Menu menu) {
+                onPressed: (Menu value) {
                   setState(() {
-                    selectedMenu = menu;
+                    selectedMenu = value;
                     Modular.to.navigate(menu.route);
                   });
                 },

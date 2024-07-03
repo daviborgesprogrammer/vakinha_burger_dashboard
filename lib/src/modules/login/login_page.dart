@@ -11,7 +11,7 @@ import '../../core/ui/styles/text_styles.dart';
 import 'login_controller.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -26,23 +26,26 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
 
   @override
   void initState() {
-    statusReactionDisposer = reaction((_) => controller.loginStatus, (status) {
-      switch (status) {
-        case LoginStateStatus.initial:
-          break;
-        case LoginStateStatus.loading:
-          showLoader();
-          break;
-        case LoginStateStatus.success:
-          hideLoader();
-          Modular.to.navigate('/');
-          break;
-        case LoginStateStatus.error:
-          hideLoader();
-          showError(controller.errorMessage ?? 'Erro');
-          break;
-      }
-    });
+    statusReactionDisposer = reaction(
+      (_) => controller.loginStatus,
+      (status) {
+        switch (status) {
+          case LoginStateStatus.initial:
+            break;
+          case LoginStateStatus.loading:
+            showLoader();
+            break;
+          case LoginStateStatus.success:
+            hideLoader();
+            Modular.to.navigate('/');
+            break;
+          case LoginStateStatus.error:
+            hideLoader();
+            showError(controller.errorMessage ?? 'Erro');
+            break;
+        }
+      },
+    );
     super.initState();
   }
 
@@ -57,7 +60,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
   void _formSubmit() {
     final formValid = formKey.currentState?.validate() ?? false;
     if (formValid) {
-      controller.login(emailEC.text, passwordEC.text);
+      controller.login(email: emailEC.text, password: passwordEC.text);
     }
   }
 
@@ -75,16 +78,17 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: screenShortestSide * .5,
+                height: context.screenHeight * .5,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/lanche.png'),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
             ),
             Container(
-              width: screenShortestSide * .5,
+              width: screenShortestSide * 0.5,
               padding: EdgeInsets.only(top: context.percentHeight(.1)),
               child: Image.asset('assets/images/logo.png'),
             ),
@@ -92,8 +96,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
               alignment: Alignment.center,
               child: Container(
                 constraints: BoxConstraints(
-                  maxWidth:
-                      context.percentWidth(screenWidth < 1300 ? 0.7 : 0.3),
+                  maxWidth: context.percentWidth(screenWidth < 1300 ? .7 : .3),
                 ),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -111,6 +114,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
                         ),
                         const SizedBox(height: 20),
                         FittedBox(
+                          fit: BoxFit.scaleDown,
                           child: Text(
                             'Login',
                             style: context.textStyles.textTitle,
@@ -123,20 +127,20 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
                           decoration:
                               const InputDecoration(labelText: 'E-mail'),
                           validator: Validatorless.multiple([
-                            Validatorless.required('E-mail Obrigatório'),
-                            Validatorless.email('E-mail inválido'),
+                            Validatorless.required('E-mail obrigatório'),
+                            Validatorless.email('E-mail inválido')
                           ]),
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
                           controller: passwordEC,
-                          obscureText: true,
                           onFieldSubmitted: (_) => _formSubmit(),
+                          obscureText: true,
                           decoration: const InputDecoration(labelText: 'Senha'),
                           validator:
                               Validatorless.required('Password Obrigatório'),
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 40),
                         SizedBox(
                           width: double.infinity,
                           height: 50,
@@ -150,11 +154,10 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
                   ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
     );
   }
 }
-// 1:58:42

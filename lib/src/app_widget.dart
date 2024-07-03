@@ -15,7 +15,6 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Modular.setInitialRoute('/login');
     Modular.setNavigatorKey(_navigatorKey);
-
     return MaterialApp.router(
       title: 'Application Name',
       theme: ThemeConfig.theme,

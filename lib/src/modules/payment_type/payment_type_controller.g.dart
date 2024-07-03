@@ -100,20 +100,25 @@ mixin _$PaymentTypeController on PaymentTypeControllerBase, Store {
     });
   }
 
-  late final _$addPaymentAsyncAction =
-      AsyncAction('PaymentTypeControllerBase.addPayment', context: context);
+  late final _$loadPaymentsAsyncAction =
+      AsyncAction('PaymentTypeControllerBase.loadPayments', context: context);
 
   @override
-  Future<void> addPayment() {
-    return _$addPaymentAsyncAction.run(() => super.addPayment());
+  Future<void> loadPayments() {
+    return _$loadPaymentsAsyncAction.run(() => super.loadPayments());
   }
 
-  late final _$editPaymentAsyncAction =
-      AsyncAction('PaymentTypeControllerBase.editPayment', context: context);
+  late final _$savePaymentAsyncAction =
+      AsyncAction('PaymentTypeControllerBase.savePayment', context: context);
 
   @override
-  Future<void> editPayment(PaymentTypeModel payment) {
-    return _$editPaymentAsyncAction.run(() => super.editPayment(payment));
+  Future<void> savePayment(
+      {int? id,
+      required String name,
+      required String acronym,
+      required bool enabled}) {
+    return _$savePaymentAsyncAction.run(() => super
+        .savePayment(id: id, name: name, acronym: acronym, enabled: enabled));
   }
 
   late final _$PaymentTypeControllerBaseActionController =

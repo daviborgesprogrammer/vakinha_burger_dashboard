@@ -9,10 +9,11 @@ import '../payment_type_controller.dart';
 class PaymentTypeFormModal extends StatefulWidget {
   final PaymentTypeController controller;
   final PaymentTypeModel? model;
+
   const PaymentTypeFormModal({
     super.key,
-    required this.controller,
     required this.model,
+    required this.controller,
   });
 
   @override
@@ -69,27 +70,30 @@ class _PaymentTypeFormModalState extends State<PaymentTypeFormModal> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
-                      onTap: _closeModal,
+                      onTap: () => _closeModal(),
                       child: const Icon(Icons.close),
                     ),
-                  ),
+                  )
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 controller: nameEC,
-                decoration: const InputDecoration(
-                  label: Text('Nome'),
-                ),
                 validator: Validatorless.required('Nome obrigatório'),
+                decoration: const InputDecoration(label: Text('Nome')),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 controller: acronymEC,
-                decoration: const InputDecoration(
-                  label: Text('Sigla'),
-                ),
-                validator: Validatorless.required('Sigla obrigatória'),
+                validator: Validatorless.required('Sigla obrigatório'),
+                decoration: const InputDecoration(label: Text('Sigla')),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Row(
                 children: [
@@ -104,7 +108,7 @@ class _PaymentTypeFormModalState extends State<PaymentTypeFormModal> {
                         enabled = value;
                       });
                     },
-                  ),
+                  )
                 ],
               ),
               const Divider(),
@@ -148,7 +152,7 @@ class _PaymentTypeFormModalState extends State<PaymentTypeFormModal> {
                     ),
                   ),
                 ],
-              ),
+              )
             ],
           ),
         ),

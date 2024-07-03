@@ -6,6 +6,6 @@ import 'src/core/env/env.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Env.i.load();
+  await Env.instance.load();
   return runApp(ModularApp(module: AppModule(), child: AppWidget()));
 }
